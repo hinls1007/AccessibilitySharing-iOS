@@ -1,0 +1,23 @@
+/* 
+  copy.strings
+  accessibiliytraining_ios
+
+  Created by Lun Lam on 02/06/2021.
+  
+*/
+
+"app_name"="Accessibility Training";
+"login_page_title"="Login";
+"username_title"="Username";
+"username_error_message"="*Error, please enter 6 - 16 character";
+"username_inputfield_accessibility_label"="Input field for username";
+"password_title"="Password";
+"password_inputfield_accessibility_label"="Input field for password";
+"login_button"="Login";
+"list_page_title"="List";
+"detail_page_title"="Detail";
+"tooltip_description"="Learn more";
+"common_loading"="Loading";
+"common_back"="Back";
+"common_close"="Close";
+"hints_double_tap"="Double tap to";
