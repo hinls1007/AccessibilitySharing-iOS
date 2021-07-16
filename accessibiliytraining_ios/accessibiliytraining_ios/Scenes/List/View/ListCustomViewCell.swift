@@ -24,10 +24,14 @@ class ListCustomViewCell: UITableViewCell {
     }
     
     func setup(){
+        
         contentView.addSubview(listCustomView)
+        
         listCustomView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: nil, views: ["view":listCustomView]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view":listCustomView]))
+        
     }
     
 }

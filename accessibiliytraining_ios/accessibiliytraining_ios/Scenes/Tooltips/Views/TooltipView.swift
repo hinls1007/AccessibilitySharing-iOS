@@ -41,6 +41,8 @@ class TooltipView: UIView {
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .left
         titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .vertical)
+        titleLabel.isAccessibilityElement = true
+        titleLabel.accessibilityTraits = .header
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
@@ -49,6 +51,8 @@ class TooltipView: UIView {
         let contentLabel = UILabel()
         contentLabel.textAlignment = .left
         contentLabel.numberOfLines = 0
+        contentLabel.isAccessibilityElement = true
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
         return contentLabel
     }()
 
@@ -57,6 +61,7 @@ class TooltipView: UIView {
         closeButton.setImage(UIImage(named: "ic_close"), for: .normal)
         closeButton.addTarget(self, action: #selector(closeButtonDidPress(_:)), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.accessibilityLabel = "common_close".localized
         return closeButton
     }()
 

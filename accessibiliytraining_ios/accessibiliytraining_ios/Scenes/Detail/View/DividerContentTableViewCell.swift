@@ -28,6 +28,7 @@ class DividerContentTableViewCell: UITableViewCell {
         leftStackView.axis = .vertical
         leftStackView.alignment = .center
         leftStackView.distribution = .fillProportionally
+        leftStackView.isAccessibilityElement = true
         return leftStackView
     }()
 
@@ -37,6 +38,7 @@ class DividerContentTableViewCell: UITableViewCell {
         rightStackView.axis = .vertical
         rightStackView.alignment = .center
         rightStackView.distribution = .fillProportionally
+        rightStackView.isAccessibilityElement = true
         return rightStackView
     }()
 
@@ -64,6 +66,7 @@ class DividerContentTableViewCell: UITableViewCell {
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         titleTwoLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionTwoLabel.translatesAutoresizingMaskIntoConstraints = false
+        accessibilityElements = [leftStackView, rightStackView]
 
         NSLayoutConstraint.activate([
             leftStackView.heightAnchor.constraint(equalToConstant: 80),
@@ -89,5 +92,8 @@ class DividerContentTableViewCell: UITableViewCell {
         descriptionLabel.text = config.description
         titleTwoLabel.text = config.titleTwo
         descriptionTwoLabel.text = config.descriptionTwo
+
+        leftStackView.accessibilityLabel = "\(config.title), \(config.description)"
+        rightStackView.accessibilityLabel = "\(config.titleTwo), \(config.descriptionTwo)"
     }
 }

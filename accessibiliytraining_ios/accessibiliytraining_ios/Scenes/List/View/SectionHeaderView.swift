@@ -37,6 +37,7 @@ class SectionHeaderView: UITableViewHeaderFooterView {
     
     func config( with config: SectionHeaderViewConfig ){
         titleLabel.text = config.title
+        titleLabel.accessibilityTraits = .header
     }
 }
 

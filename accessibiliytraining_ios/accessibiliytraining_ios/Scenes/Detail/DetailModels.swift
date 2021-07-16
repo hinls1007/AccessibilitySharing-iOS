@@ -18,6 +18,7 @@ enum Detail
         }
         struct ViewModel {
             let title: String
+            let backButtonAccessibilityLabel: String
             let sections: [DetailRow]
         }
     }

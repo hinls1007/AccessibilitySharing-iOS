@@ -129,12 +129,25 @@ class LoginViewController: UIViewController, LoginDisplayLogic
         userNameTitleLabel.text = viewModel.usernameTitle
         passwordTitleLabel.text = viewModel.passwordTitle
 
+        // when voice over is running please remove placeholder
+        if !UIAccessibility.isVoiceOverRunning {
+            userNameTextField.placeholder = viewModel.usernameTitle
+            passwordTextField.placeholder = viewModel.passwordTitle
+        }
+
+        userNameTextField.accessibilityLabel = viewModel.usernameAccessibilityLabel
+        passwordTextField.accessibilityLabel = viewModel.passwordAccessibilityLabel
+
+        loginButton.accessibilityHint = "hints_double_tap".localized + "login_button".localized
     }
     
     func displayLogin(viewModel: Login.Login.ViewModel) {                
         if let error = viewModel.error {
             userNameErrorLabel.text = error
             userNameErrorLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+                UIAccessibility.post(notification: .layoutChanged, argument: self.userNameErrorLabel)
+            }
         } else{
             userNameErrorLabel.isHidden = true
             router?.routeToList()

@@ -27,7 +27,9 @@ class LoginPresenter: LoginPresentationLogic
                                             title: "login_page_title".localized,
                                             iconImage: UIImage(named: "bacteria"),
                                             usernameTitle: "username_title".localized,
+                                            usernameAccessibilityLabel: "username_inputfield_accessibility_label".localized,
                                             passwordTitle: "password_title".localized,
+                                            passwordAccessibilityLabel: "password_inputfield_accessibility_label".localized,
                                             loginButtonTitle: "login_button".localized))
     }
     

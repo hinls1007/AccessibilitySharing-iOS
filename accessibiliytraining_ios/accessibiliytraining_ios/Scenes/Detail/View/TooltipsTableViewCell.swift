@@ -24,6 +24,7 @@ class TooltipsTableViewCell: UITableViewCell {
         let tooltipsButton = UIButton()
         tooltipsButton.setImage(UIImage(named: "ic_info"), for: .normal)
         tooltipsButton.addTarget(self, action: #selector(tooltipsDidPress), for: .touchUpInside)
+        tooltipsButton.accessibilityLabel = "tooltip_description".localized
         return tooltipsButton
     }()
     let amountLabel = UILabel()
@@ -77,6 +78,7 @@ class TooltipsTableViewCell: UITableViewCell {
         titleLabel.text = config.title
         amountLabel.text = config.amount
         dateLabel.text = config.date
+        dateLabel.accessibilityLabel = config.date.accessibilityLabelDate
     }
 
     @objc func tooltipsDidPress(_ sender: UIButton) {

@@ -70,7 +70,9 @@ class ListSectionOneTableViewCell: UITableViewCell {
         titleLabel.text = config.title
         amountLabel.text = config.amount
         dateLabel.text = config.date
+        dateLabel.accessibilityLabel = config.date.accessibilityLabelDate
         arrowImageView.image = config.arrow
+        accessibilityTraits = config.arrow != nil ? .button : .staticText
     }
 }
 
