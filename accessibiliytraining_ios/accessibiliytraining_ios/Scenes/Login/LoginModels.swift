@@ -29,7 +29,9 @@ enum Login
             let title: String?
             let iconImage: UIImage?
             let usernameTitle: String
+            let usernameAccessibilityLabel: String
             let passwordTitle: String
+            let passwordAccessibilityLabel: String
             let loginButtonTitle: String
         }
     }

@@ -75,6 +75,7 @@ class DetailViewController: BaseViewController, DetailDisplayLogic
 
     func displaySetupView(viewModel: Detail.SetupView.ViewModel) {
         navigationItem.title = viewModel.title
+        backButton.accessibilityLabel = viewModel.backButtonAccessibilityLabel
 
         sections = viewModel.sections
         tableView.reloadData()
@@ -105,7 +106,6 @@ extension DetailViewController: UITableViewDataSource {
                 for: indexPath
             ) as? LargeImageViewTableViewCell
             aCell?.config(with: largeImageCellViewConfig)
-            aCell?.isAccessibilityElement = true
             cell = aCell
         case .tooltips(let tooltipsViewConfig):
             let aCell = tableView.dequeueReusableCell(
@@ -143,11 +143,13 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController: TooltipsTableViewCellDelegate {
     func tableViewCellTooltipsDidPress(_ cell: TooltipsTableViewCell) {
+        view.accessibilityElementsHidden = true
         router?.routeToShowTooltipView()
     }
 }
 
 extension DetailViewController: TooltipViewControllerDelegate {
     func tooltipViewControllerDismiss(_ viewController: UIViewController) {
+        view.accessibilityElementsHidden = false
     }
 }

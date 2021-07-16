@@ -71,9 +71,16 @@ class ListViewController: BaseViewController, ListDisplayLogic
     func displaySetUpViews(viewModel: List.SetupViews.ViewModel) {
         navigationItem.title = viewModel.title
         
+        backButton.accessibilityLabel = viewModel.backButtonAccessibilityLabel
+        
         loadingView.config(with: LoadingViewConfig(title: viewModel.loadingViewTitle))
 
         loadingView.show(in: view)
+
+        // if not delay the loading voice over will be cancel
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            UIAccessibility.post(notification: .layoutChanged, argument: self.loadingView)
+        }
 
         interactor?.loadData(request: List.LoadData.Request())
     }
@@ -106,7 +113,6 @@ extension ListViewController: UITableViewDataSource {
             let row = sections[indexPath.section].rows[indexPath.row]
             
             cell.config(with: ListSectionOneTableViewCellViewConfig(title: row.title, amount: row.amount, date: row.date, arrow: row.arrow))
-            cell.accessibilityElementsHidden = true
             
             return cell
         } else {
@@ -115,7 +121,8 @@ extension ListViewController: UITableViewDataSource {
             let row = sections[indexPath.section].rows[indexPath.row]
             
             cell.listCustomView.config(with: ListCustomViewConfig(title: row.title, amount: row.amount, date: row.date, arrow: row.arrow))
-            cell.isAccessibilityElement = true
+            cell.accessibilityTraits = row.arrow != nil ? .button : .staticText
+
             return cell
         }
     }

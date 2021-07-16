@@ -37,10 +37,12 @@ class LoadingView: UIView {
             spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+        
+        isAccessibilityElement = true
     }
     
     func config( with config: LoadingViewConfig ){
-        
+        accessibilityLabel = config.title
     }
     
     func show( in view: UIView ){

@@ -37,6 +37,7 @@ class DetailPresenter: DetailPresentationLogic
             sections.append(contentsOf: generateImagelist(images: detail.images))
 
             let viewModel = Detail.SetupView.ViewModel(title: "detail_page_title".localized,
+                                                       backButtonAccessibilityLabel: "common_back".localized,
                                                        sections: sections)
             viewController?.displaySetupView(viewModel: viewModel)
         }
@@ -49,7 +50,7 @@ class DetailPresenter: DetailPresentationLogic
             sections.append(.imageList(ImageContentCellViewConfig(
                                         image: UIImage(named: "bacteria"),
                                         title: $0.title,
-                                        description: $0.date)))
+                                        date: $0.date)))
         }
 
         return sections

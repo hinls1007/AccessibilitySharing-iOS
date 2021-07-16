@@ -26,7 +26,8 @@ class ListPresenter: ListPresentationLogic
     func presentSetupViews(response: List.SetupViews.Response) {
         viewController?.displaySetUpViews(viewModel: List.SetupViews.ViewModel(
                                             title: "list_page_title".localized,
-                                            loadingViewTitle: "common_loading".localized))
+                                            loadingViewTitle: "common_loading".localized,
+                                            backButtonAccessibilityLabel: "common_back".localized))
     }
     
     func presentLoadData(response: List.LoadData.Response) {

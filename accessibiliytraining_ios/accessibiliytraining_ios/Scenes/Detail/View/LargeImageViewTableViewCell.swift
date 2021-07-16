@@ -29,6 +29,7 @@ class LargeImageViewTableViewCell: UITableViewCell {
     }
 
     private func setup() {
+        accessibilityElementsHidden = true
         contentView.addSubview(largeImageView)
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 120),

@@ -10,7 +10,7 @@ import UIKit
 struct ImageContentCellViewConfig {
     let image: UIImage?
     let title: String
-    let description: String
+    let date: String
 }
 
 class ImageContentTableViewCell: UITableViewCell {
@@ -22,7 +22,7 @@ class ImageContentTableViewCell: UITableViewCell {
         return imageView
     }()
     let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
+    let dateLabel = UILabel()
     let contentStackView: UIStackView = {
         let contentStackView = UIStackView()
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,10 +45,10 @@ class ImageContentTableViewCell: UITableViewCell {
         contentView.addSubview(contentImageView)
         contentView.addSubview(contentStackView)
         contentStackView.addArrangedSubview(titleLabel)
-        contentStackView.addArrangedSubview(descriptionLabel)
+        contentStackView.addArrangedSubview(dateLabel)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             contentImageView.widthAnchor.constraint(equalToConstant: 30),
@@ -65,6 +65,8 @@ class ImageContentTableViewCell: UITableViewCell {
     func config(with config: ImageContentCellViewConfig) {
         contentImageView.image = config.image
         titleLabel.text = config.title
-        descriptionLabel.text = config.description
+        dateLabel.text = config.date
+        dateLabel.accessibilityLabel = config.date.accessibilityLabelDate
+
     }
 }

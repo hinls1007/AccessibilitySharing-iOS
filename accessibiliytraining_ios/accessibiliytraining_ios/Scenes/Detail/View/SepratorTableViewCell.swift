@@ -19,6 +19,7 @@ class SepratorTableViewCell: UITableViewCell {
     }
 
     private func setup() {
+        accessibilityElementsHidden = true
         contentView.backgroundColor = .gray
         NSLayoutConstraint.activate([
             contentView.heightAnchor.constraint(equalToConstant: 20)
